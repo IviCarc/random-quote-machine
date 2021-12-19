@@ -1,0 +1,88 @@
+$bg-color :#fff;
+
+* {
+	box-sizing: border-box;
+}
+
+@keyframes onNewQuote {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+body {
+	animation: ease-in onNewQuote 1s;
+}
+
+.animation {
+	animation: ease-in onNewQuote 1s;
+}
+
+#quote-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 700px;
+	width: 70%;
+	background-color: $bg-color;
+	border-radius: 10px;
+	padding: 30px;
+
+	p {
+		font-weight: 500;
+		padding: 5px;
+		margin: 0px;
+	}
+
+	#text {
+		font-size: 1.5em;
+		color: #fff;
+	}
+
+	#author-container {
+		text-align: right;
+
+		#author {
+			font-size: 1.3em;
+		}
+	}
+
+	#clickables-container {
+		padding: 10px 0px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#tweet-quote {
+		height: 100%;
+	}
+
+	.tw-logo {
+		height: 45px;
+	}
+
+	#new-quote {
+		height: 100%;
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+}
+
+@media (max-width:600px) {
+	#quote-box {
+		padding: 10px;
+		#text {
+			font-size: 1.2em;
+		}
+		#author-container #author {
+			font-size: 1em ;
+		}
+	}
+	}
