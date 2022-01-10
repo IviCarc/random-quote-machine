@@ -1,11 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "./App.scss";
 import axios from "axios";
-import { ReactComponent as TwLogo } from "./twitter-square-brands.svg";
+import { ReactComponent as TwLogo } from "./twitter-brands.svg";
 
 function App() {
 	const [quote, setQuote] = useState(null);
 	const [author, setAuthor] = useState(null);
+	const [count, setCount] = useState(0);
 
 	const getRandomQuote = async () => {
 		try {
@@ -13,29 +14,27 @@ function App() {
 			setQuote(res.content);
 			setAuthor(res.author);
 
-			const colors = ["#5dade2", "#9cda29", "#FFC300", "#FF5733"]
-			const random = Math.floor(Math.random() * (colors.length));
+			const colors = ["#5dade2", "#75a31f", "#FFC300", "#FF5733"];
 
-			document.body.style.backgroundColor = colors[random]
-			document.getElementById('text').style.color = colors[random]
-			document.getElementById('author').style.color = colors[random]
-			document.getElementById('new-quote').style.backgroundColor = colors[random]
-			console.log(colors[random], random)
-			document.body.animate([
-			// keyframes
-			{ opacity :"0" },
-			{ opacity : "1" }
-			], {
-			// timing options
-			duration: 1000,
-			});
+			document.querySelector(":root").style.setProperty("--main-color", colors[count]);
 
+			count === 3 ? setCount(0) : setCount(count + 1);
+
+			document.body.animate(
+				[
+					// keyframes
+					{ opacity: "0" },
+					{ opacity: "1" },
+				],
+				{
+					// timing options
+					duration: 1000,
+				}
+			);
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
-
 
 	useEffect(() => {
 		getRandomQuote();
@@ -44,22 +43,25 @@ function App() {
 	return (
 		<div id='quote-box'>
 			<div id='text-container'>
-				<p id='text' >
-					"{quote}"
-				</p>
+				<p id='text'>"{quote}"</p>
 			</div>
 
 			<div id='author-container'>
-				<p id='author' >
-					{author}
-				</p>
+				<p id='author'>{author}</p>
 			</div>
 
 			<div id='clickables-container'>
-				<a target='_blank' href='twitter.com/intent/tweet' id='tweet-quote'>
-					<TwLogo className='tw-logo'></TwLogo>
-				</a>
-				<button id='new-quote' onClick={() => { getRandomQuote()}}>
+				<div className='logo-container'>
+					<a target='_blank' href='twitter.com/intent/tweet' id='tweet-quote'>
+						<TwLogo className='tw-logo'></TwLogo>
+					</a>
+				</div>
+				<button
+					id='new-quote'
+					onClick={() => {
+						getRandomQuote();
+					}}
+				>
 					New Quote
 				</button>
 			</div>

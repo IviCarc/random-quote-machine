@@ -1,4 +1,8 @@
-$bg-color :#fff;
+$bg-color: #fff;
+
+:root {
+	--main-color: #5dade2;
+}
 
 * {
 	box-sizing: border-box;
@@ -13,7 +17,14 @@ $bg-color :#fff;
 	}
 }
 
+// .tw-logo {
+// 	path {
+// 		fill: #fff;
+// 	}
+// }
+
 body {
+	background-color: var(--main-color);
 	animation: ease-in onNewQuote 1s;
 }
 
@@ -31,6 +42,7 @@ body {
 	background-color: $bg-color;
 	border-radius: 10px;
 	padding: 30px;
+	box-shadow: 0px 0px 20px 1px;
 
 	p {
 		font-weight: 500;
@@ -39,14 +51,16 @@ body {
 	}
 
 	#text {
+		color: var(--main-color);
+		text-align: center;
 		font-size: 1.5em;
-		color: #fff;
 	}
 
 	#author-container {
 		text-align: right;
 
 		#author {
+			color: var(--main-color);
 			font-size: 1.3em;
 		}
 	}
@@ -67,22 +81,81 @@ body {
 	}
 
 	#new-quote {
+		transition: color 0.3s, background-color 0.3s;
+		background-color: var(--main-color);
 		height: 100%;
 		padding: 10px;
-		border: none;
-		border-radius: 5px;
+		border-radius: 10px;
 		cursor: pointer;
+		color: #fff;
+		border: 2px solid var(--main-color);
+		font-weight: 600;
+	}
+
+	#new-quote:hover {
+		color: var(--main-color);
+		background-color: #fff;
+		border: 2px solid var(--main-color);
+	}
+
+	.logo-container {
+		box-sizing: content-box;
+		padding: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		border-radius: 10px;
+		border: 2px solid var(--main-color);
+		cursor: pointer;
+		background-color: var(--main-color);
+		height: 100%;
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-content: center;
+		}
+
+		.tw-logo {
+			transition: background-color 0.3s;
+			height: 40px;
+			path {
+				transition: fill 0.3s;
+				fill: #fff;
+			}
+		}
+	}
+
+	.logo-container:hover {
+		background-color: #fff;
+		.tw-logo {
+			path {
+				fill: var(--main-color);
+			}
+		}
 	}
 }
 
-@media (max-width:600px) {
+// @media (max-width: 600px) {
+// 	#quote-box {
+// 		#text {
+// 			font-size: 1.4em;
+// 		}
+// 		#author-container #author {
+// 			font-size: 1.2em;
+// 		}
+// 	}
+// }
+
+@media (max-width: 600px) {
 	#quote-box {
-		padding: 10px;
+		width: 90%;
 		#text {
-			font-size: 1.2em;
+			font-size: 1.4em;
 		}
 		#author-container #author {
-			font-size: 1em ;
+			font-size: 1.2em;
 		}
 	}
-	}
+}
