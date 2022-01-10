@@ -10,9 +10,12 @@ function App() {
 
 	const getRandomQuote = async () => {
 		try {
-			const res = await (await axios.get("http://api.quotable.io/random")).data;
-			setQuote(res.content);
-			setAuthor(res.author);
+			const { content, author } = await (
+				await axios.get("http://api.quotable.io/random")
+			).data;
+
+			setQuote(content);
+			setAuthor(author);
 
 			const colors = ["#5dade2", "#75a31f", "#FFC300", "#FF5733"];
 
@@ -38,6 +41,8 @@ function App() {
 
 	useEffect(() => {
 		getRandomQuote();
+		// DONT CHANGE THIS
+		// eslint-disable-next-line
 	}, []);
 
 	return (
