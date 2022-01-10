@@ -57,7 +57,7 @@ function App() {
 
 			<div id='clickables-container'>
 				<div className='logo-container'>
-					<a target='_blank' href='twitter.com/intent/tweet' id='tweet-quote'>
+					<a target='_blank' href='https://twitter.com/intent/tweet' id='tweet-quote'>
 						<TwLogo className='tw-logo'></TwLogo>
 					</a>
 				</div>
