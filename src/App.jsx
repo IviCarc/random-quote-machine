@@ -11,7 +11,7 @@ function App() {
 	const getRandomQuote = async () => {
 		try {
 			const { content, author } = await (
-				await axios.get("http://api.quotable.io/random")
+				await axios.get("https://api.quotable.io/random")
 			).data;
 
 			setQuote(content);
