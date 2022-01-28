@@ -40,19 +40,16 @@ $bg-color: rgb(255, 255, 255);
 		color: var(--main-color);
 		text-align: center;
 		font-size: 1.5em;
+		transition: all 1s;
 	}
 
-	@keyframes fade {
-		from {
-			transform: translate(0px);
-		}
-		to {
-			transform: translate(100%);
-		}
+	.collapsed {
+		height: 0px;
 	}
 
 	.data-container {
 		position: relative;
+		top: 0px;
 	}
 
 	div.anim-div {
@@ -62,10 +59,6 @@ $bg-color: rgb(255, 255, 255);
 		height: 102%;
 		position: absolute;
 		top: 0px;
-	}
-
-	div.animation {
-		animation: fade 1s ease-in;
 	}
 
 	#author-container {
@@ -78,30 +71,23 @@ $bg-color: rgb(255, 255, 255);
 	}
 
 	#clickables-container {
-		padding: 10px 0px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	}
-
-	#tweet-quote {
-		height: 100%;
-	}
-
-	.tw-logo {
-		height: 45px;
+		padding: 10px 0px;
 	}
 
 	#new-quote {
 		transition: color 0.3s, background-color 0.3s;
 		background-color: var(--main-color);
-		height: 100%;
+		height: 50px;
 		padding: 10px;
 		border-radius: 10px;
 		cursor: pointer;
 		color: #fff;
 		border: 2px solid var(--main-color);
 		font-weight: 600;
+		font-size: 1.1em;
 	}
 
 	#new-quote:hover {
@@ -112,7 +98,6 @@ $bg-color: rgb(255, 255, 255);
 
 	.logo-container {
 		box-sizing: content-box;
-		padding: 5px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -121,7 +106,7 @@ $bg-color: rgb(255, 255, 255);
 		border: 2px solid var(--main-color);
 		cursor: pointer;
 		background-color: var(--main-color);
-		height: 100%;
+		height: 50px;
 
 		a {
 			display: flex;
@@ -131,7 +116,8 @@ $bg-color: rgb(255, 255, 255);
 
 		.tw-logo {
 			transition: background-color 0.3s;
-			height: 40px;
+			padding: 3px;
+			height: 50px;
 			path {
 				transition: fill 0.3s;
 				fill: #fff;

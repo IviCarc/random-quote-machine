@@ -6,9 +6,9 @@ import { ReactComponent as TwLogo } from "./twitter-brands.svg";
 function App() {
 	const [quote, setQuote] = useState("");
 	const [author, setAuthor] = useState("");
-
 	
 	const getRandomQuote = async () => {
+
 		try {
 			const { content, author }: {content:string, author : string} = await (
 				await axios.get("https://api.quotable.io/random")
@@ -19,7 +19,7 @@ function App() {
 			console.log(err);
 			return;
 		}
-		// document.querySelector(".anim-div").classList.add('animation')
+
 		document.querySelector(".anim-div").animate([
 			{ transform: "translate(0px)", display:'block' },
 			{ transform: "translate(100%)" , display:'block'}],
@@ -28,8 +28,10 @@ function App() {
 		})
 	};
 
+	
 	useEffect(() => {
 		getRandomQuote();
+		document.getElementById('new-quote').style.height = '100%'
 		// DONT CHANGE THIS
 		// eslint-disable-next-line
 	}, []);
@@ -38,9 +40,10 @@ function App() {
 		<div className='app-container'>
 			<div className='bg'></div>
 			<div id='quote-box'>
+
 				<div className='data-container'>	
 					<div id='text-container'>
-						<h1 id='text'>"{quote}"</h1>
+						<h1 id='text'>{quote}</h1>
 						<div className="anim-div"></div>
 					</div>
 
